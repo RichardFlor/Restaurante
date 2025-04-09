@@ -26,7 +26,7 @@ public class DefaultProjectApplication {
                 | _| `._____||__|  \\______||__|  |__| /__/     \\__\\ | _| `._____||_______/\s
                                                                                           \s
                  \s
-                  RICHARD PROJECT :: 0.1
+                  RICHARD PROJECT :: 1.0
                 \s""");
     }
 }
