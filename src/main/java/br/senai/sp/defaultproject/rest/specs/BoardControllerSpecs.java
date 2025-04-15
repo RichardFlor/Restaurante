@@ -1,12 +1,14 @@
 package br.senai.sp.defaultproject.rest.specs;
 
 import br.senai.sp.defaultproject.dtos.board.input.CreateBoardInputDTO;
+import br.senai.sp.defaultproject.dtos.board.output.BoardOutputDTO;
 import br.senai.sp.defaultproject.errors.responses.DuplicatedResourceErrorResponse;
 import br.senai.sp.defaultproject.rest.specs.commons.response.error.ApiResponseBadRequest;
 import br.senai.sp.defaultproject.rest.specs.commons.response.error.ApiResponseForbidden;
 import br.senai.sp.defaultproject.rest.specs.commons.response.error.ApiResponseInternalServerError;
 import br.senai.sp.defaultproject.rest.specs.commons.response.error.ApiResponseNotFound;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -18,11 +20,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.util.Set;
+
 @ApiResponseForbidden
 @ApiResponseBadRequest
 @ApiResponseInternalServerError
 @ApiResponseNotFound
-@Tag(name = "Board", description = "Board information")
+@Tag(name = "3. Board", description = "Board operations")
 public interface BoardControllerSpecs {
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create board")
@@ -35,4 +39,11 @@ public interface BoardControllerSpecs {
 
     @SecurityRequirement(name="jwt")
     void create(@RequestBody @Valid CreateBoardInputDTO request);
+
+    @Operation(summary = "List boards")
+    @ApiResponse(responseCode = "200", description = "Ok", content = {
+            @Content(array = @ArraySchema(schema = @Schema(implementation = BoardOutputDTO.class)))
+    })
+    @SecurityRequirement(name="jwt")
+    Set<BoardOutputDTO> findAll();
 }

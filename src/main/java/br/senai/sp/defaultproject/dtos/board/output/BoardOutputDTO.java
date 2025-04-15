@@ -1,5 +1,6 @@
 package br.senai.sp.defaultproject.dtos.board.output;
 
+import br.senai.sp.defaultproject.enums.BoardStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,4 +16,6 @@ public class BoardOutputDTO {
 
     @Schema(example = "Mesa numero 1")
     private String boardNumber;
+
+    private BoardStatus boardStatus;
 }
