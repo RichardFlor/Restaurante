@@ -23,7 +23,7 @@ public class Board {
     private String boardNumber;
 
     @Column(nullable = false)
-    private BoardStatus status;
+    private BoardStatus boardStatus;
 
     private LocalDateTime createdAt;
 }
