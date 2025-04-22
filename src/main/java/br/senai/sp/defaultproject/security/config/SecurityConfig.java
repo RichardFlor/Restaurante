@@ -1,6 +1,5 @@
 package br.senai.sp.defaultproject.security.config;
 
-import br.senai.sp.defaultproject.entities.User;
 import br.senai.sp.defaultproject.enums.UserRole;
 import br.senai.sp.defaultproject.security.filters.AuthenticationFilter;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.util.matcher.RegexRequestMatcher;
 
 @Configuration
 @EnableWebSecurity

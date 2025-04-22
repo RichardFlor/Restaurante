@@ -23,7 +23,7 @@ public class SwaggerConfig {
 
     @Bean
     public OpenAPI customOpenAPI() {
-        var apiInfo = new Info().title("Default Project API").version("1.0");
+        var apiInfo = new Info().title("Restaurante API").version("1.0");
 
         var swaggerVariables = new ServerVariables()
                 .addServerVariable(
