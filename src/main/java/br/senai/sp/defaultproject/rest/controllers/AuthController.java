@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class AuthController implements AuthControllerSpecs {
     private final LoginUseCase loginUseCase;

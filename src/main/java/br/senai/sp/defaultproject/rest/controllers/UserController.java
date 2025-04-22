@@ -29,7 +29,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
 public class UserController implements UserControllerSpecs {
     private final CreateUserUseCase createUserUseCase;

@@ -1,5 +1,6 @@
 package br.senai.sp.defaultproject.security.config;
 
+import br.senai.sp.defaultproject.entities.User;
 import br.senai.sp.defaultproject.enums.UserRole;
 import br.senai.sp.defaultproject.security.filters.AuthenticationFilter;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,6 @@ import org.springframework.security.web.util.matcher.RegexRequestMatcher;
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final AuthenticationFilter authenticationFilter;
-    private final String UUID_REGEX = "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}";
 
     private static final String[] SWAGGER_RESOURCES = {
             "/swagger-ui/**",
@@ -36,34 +36,27 @@ public class SecurityConfig {
             "/docs/**"
     };
 
-    private static final String[] PUBLIC_POST_ENDPOINTS = {
-            "/user",
-            "/login"
-    };
-
-    private static final String[] PUBLIC_PATCH_ENDPOINTS = {
-            "/require-password-recovery",
-            "/validate-password-recovery-code",
-            "/user/change-password"
-    };
-
-    private static final String[] PUBLIC_GET_ENDPOINTS = {
-            "/user/*/validate-email"
-    };
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.PATCH, PUBLIC_PATCH_ENDPOINTS).permitAll()
-                        .requestMatchers(HttpMethod.POST, PUBLIC_POST_ENDPOINTS).permitAll()
-                        .requestMatchers(HttpMethod.GET, PUBLIC_GET_ENDPOINTS).permitAll()
-                        .requestMatchers(
-                                RegexRequestMatcher.regexMatcher(
-                                        HttpMethod.GET, "/user/" + UUID_REGEX)).hasAnyAuthority(UserRole.ADMIN.name())
+                        .requestMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
+                        .requestMatchers(HttpMethod.PATCH, "/api/v1/require-password-recovery").permitAll()
+                        .requestMatchers(HttpMethod.PATCH, "/api/v1/validate-password-recovery-code").permitAll()
+                        .requestMatchers(HttpMethod.PATCH, "/api/v1/user/change-password").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/user/*/validate-email").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/board").permitAll()
                         .requestMatchers(SWAGGER_RESOURCES).permitAll()
+
+                        .requestMatchers(HttpMethod.POST, "/api/v1/user").hasAnyAuthority(UserRole.ADMIN.name())
+                        .requestMatchers(HttpMethod.POST, "/api/v1/board").hasAnyAuthority(UserRole.ADMIN.name())
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/board/*").hasAnyAuthority(UserRole.ADMIN.name())
+                        //.requestMatchers(HttpMethod.GET, "/api/v1/board").hasAnyAuthority(UserRole.ADMIN.name())
+
+
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/board/*").hasAnyAuthority(UserRole.WAITER.name())
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class)

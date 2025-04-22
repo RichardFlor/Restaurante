@@ -15,7 +15,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/board")
+@RequestMapping("/api/v1/board")
 @RequiredArgsConstructor
 public class BoardController implements BoardControllerSpecs {
     private final CreateBoardUseCase createBoardUseCase;
