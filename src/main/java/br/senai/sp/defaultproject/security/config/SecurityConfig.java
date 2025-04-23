@@ -41,6 +41,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/user").permitAll()
                         .requestMatchers(HttpMethod.PATCH, "/api/v1/require-password-recovery").permitAll()
                         .requestMatchers(HttpMethod.PATCH, "/api/v1/validate-password-recovery-code").permitAll()
                         .requestMatchers(HttpMethod.PATCH, "/api/v1/user/change-password").permitAll()
@@ -48,7 +49,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/v1/board").permitAll()
                         .requestMatchers(SWAGGER_RESOURCES).permitAll()
 
-                        .requestMatchers(HttpMethod.POST, "/api/v1/user").hasAnyAuthority(UserRole.ADMIN.name())
+
+
                         .requestMatchers(HttpMethod.POST, "/api/v1/board").hasAnyAuthority(UserRole.ADMIN.name())
                         .requestMatchers(HttpMethod.PUT, "/api/v1/board/*").hasAnyAuthority(UserRole.ADMIN.name())
                         //.requestMatchers(HttpMethod.GET, "/api/v1/board").hasAnyAuthority(UserRole.ADMIN.name())
