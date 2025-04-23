@@ -66,9 +66,9 @@ default-project:
     secret: ${JWT_SECRET:defaultProject2024}
     expiration: ${JWT_EXPIRATION:3000}
     issuer: ${JWT_ISSUER:Default Project API}
-  front:
-      url: ${FRONT_URL:http://127.0.0.1:5500}
-      origin: ${ALLOWED_ORIGIN:*}
-cht:
-  front:
-    url: "http://127.0.0.1:5500"
+#  front:
+#      url: ${FRONT_URL:*}
+#      origin: ${ALLOWED_ORIGIN:*}
+#cht:
+#  front:
+#    url: "*"
