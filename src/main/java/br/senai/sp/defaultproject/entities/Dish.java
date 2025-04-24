@@ -1,6 +1,8 @@
 package br.senai.sp.defaultproject.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -24,6 +26,8 @@ public class Dish {
 
     private String description;
 
+    @NotNull
+    @DecimalMin(value = "0.01", inclusive = true)
     @Column(nullable = false)
     private BigDecimal price;
 
