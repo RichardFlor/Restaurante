@@ -69,6 +69,6 @@ default-project:
 #  front:
 #      url: ${FRONT_URL:*}
 #      origin: ${ALLOWED_ORIGIN:*}
-#cht:
-#  front:
-#    url: "*"
+cht:
+  front:
+    url: "*"
