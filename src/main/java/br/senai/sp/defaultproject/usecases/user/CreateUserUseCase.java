@@ -61,9 +61,9 @@ public class CreateUserUseCase {
     }
 
     private String generateUrlToValidateEmail(UUID userId) {
-        var baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + "/v1";
+        var baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
         return MessageFormat.format(
-                "{0}/user/{1}/validate-email",
+                "{0}/api/v1/user/{1}/validate-email",
                 baseUrl,
                 userId
         );

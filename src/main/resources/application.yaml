@@ -15,7 +15,7 @@ spring:
       ddl-auto: ${HIBERNATE_DDL:none}
 server:
   servlet:
-    context-path: /api/v1
+    context-path: /
 springdoc:
   swagger-ui:
     tagsSorter: alpha
