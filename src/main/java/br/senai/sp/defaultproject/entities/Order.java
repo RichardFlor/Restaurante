@@ -24,11 +24,9 @@ public class Order {
     private Board board;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "waiter_id", nullable = false)
-    private User waiter;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderItem> items;
 }
