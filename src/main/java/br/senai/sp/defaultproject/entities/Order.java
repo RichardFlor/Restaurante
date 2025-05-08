@@ -27,6 +27,10 @@ public class Order {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "dish_id", nullable = false)
+    private Dish dish;
+
     private LocalDateTime createdAt;
 
 }
