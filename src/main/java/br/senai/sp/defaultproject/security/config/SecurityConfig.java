@@ -48,20 +48,25 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/v1/user/*/validate-email").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/board").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/dish").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/v1/order").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/v1/order").permitAll()
+//                        .requestMatchers(HttpMethod.GET, "/api/v1/order").permitAll()
+//                        .requestMatchers(HttpMethod.POST, "/api/v1/order").permitAll()
                         .requestMatchers(SWAGGER_RESOURCES).permitAll()
 
 
 
                         .requestMatchers(HttpMethod.POST, "/api/v1/board").hasAnyAuthority(UserRole.ADMIN.name())
+                        .requestMatchers(HttpMethod.GET, "/api/v1/board").hasAnyAuthority(UserRole.ADMIN.name())
                         .requestMatchers(HttpMethod.PUT, "/api/v1/board/*").hasAnyAuthority(UserRole.ADMIN.name())
                         .requestMatchers(HttpMethod.POST, "/api/v1/dish").hasAnyAuthority(UserRole.ADMIN.name())
                         .requestMatchers(HttpMethod.PUT, "/api/v1/dish/*").hasAnyAuthority(UserRole.ADMIN.name())
+                        .requestMatchers(HttpMethod.GET, "/api/v1/order").hasAnyAuthority(UserRole.ADMIN.name())
+                        .requestMatchers(HttpMethod.POST, "/api/v1/order").hasAnyAuthority(UserRole.ADMIN.name())
 
 
 
                         .requestMatchers(HttpMethod.PUT, "/api/v1/board/*").hasAnyAuthority(UserRole.WAITER.name())
+                        .requestMatchers(HttpMethod.GET, "/api/v1/order").hasAnyAuthority(UserRole.WAITER.name())
+                        .requestMatchers(HttpMethod.POST, "/api/v1/order").hasAnyAuthority(UserRole.WAITER.name())
 
                         .anyRequest().authenticated()
                 )

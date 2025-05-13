@@ -1,0 +1,75 @@
+INSERT INTO users (
+    id,
+    profile_image_uri,
+    name,
+    email,
+    email_validated_at,
+    role,
+    password,
+    password_recovery_code
+) VALUES
+(
+    'efb6bbef-c04e-4309-b886-d02bc0c6df4a',
+    NULL,
+    'Richard',
+    'richard@gmail.com',
+    '2025-04-09 12:53:55.377',
+    0,
+    '$2a$10$QEuydTiragsgdrBOg7yc6ukpwg0rnW4Cu7IL4UIxZpykf08.Q86A6',
+    NULL
+),
+(
+    '5f052021-38b3-4e3f-a69c-ae91a2b8265f',
+    NULL,
+    'Garçom',
+    'garçom@gmail.com',
+    '2025-04-09 12:53:55.377',
+    1,
+    '$2a$10$QEuydTiragsgdrBOg7yc6ukpwg0rnW4Cu7IL4UIxZpykf08.Q86A6',
+    NULL
+);
+
+
+
+INSERT INTO boards (id, board_number, board_status, created_at) VALUES
+('b13cd9c5-767f-4466-8076-efa43fa97841', 'Mesa 1', 0, '2025-05-09 12:33:06.365'),
+('aba0b81c-e424-449b-b2ad-200330b2c7e3', 'Mesa 2', 0, '2025-05-09 12:33:10.389'),
+('da048baf-6133-49b3-a38d-c647b3ab2d1c', 'Mesa 3', 0, '2025-05-09 12:33:15.774'),
+('fba6f9d8-9467-4de7-beaf-d297a1f27c3f', 'Mesa 4', 0, '2025-05-09 12:33:46.964'),
+('f03efcaa-a8e4-40ef-9b76-e009d3130be7', 'Mesa 5', 0, '2025-05-09 12:33:50.011');
+
+
+
+INSERT INTO dishes (id, name, description, price, created_at) VALUES
+('921edc35-d8fb-40e4-b07c-945153ef92d0', 'arroz', 'arroz', 0.01, '2025-05-09 12:34:06.639'),
+('33f09169-3000-4214-a9e2-f1d3c0b8bad4', 'feijao', 'feijao', 0.01, '2025-05-09 12:34:13.128'),
+('3c8e2b02-e8d7-439c-b661-cd3617c59e48', 'macarrao', 'macarrao', 0.01, '2025-05-09 12:34:21.287');
+
+
+INSERT INTO orders (
+	id,
+	board_id,
+	user_id,
+	dish_id,
+	created_at
+) VALUES
+(
+	'77db4449-fcfa-4e8f-964f-25e5a36dd538',
+	'b13cd9c5-767f-4466-8076-efa43fa97841',
+	'5f052021-38b3-4e3f-a69c-ae91a2b8265f',
+	'921edc35-d8fb-40e4-b07c-945153ef92d0',
+	'2025-05-12 09:03:03.880'
+),
+(	'1d5166c7-4500-4137-89e5-94801c058fb4',
+	'b13cd9c5-767f-4466-8076-efa43fa97841',
+	'5f052021-38b3-4e3f-a69c-ae91a2b8265f',
+	'921edc35-d8fb-40e4-b07c-945153ef92d0',
+	'2025-05-12 09:17:34.847'
+),
+(
+	'a52c80f2-a10b-4cf0-945c-e0ca960fd3af',
+	'f03efcaa-a8e4-40ef-9b76-e009d3130be7',
+	'5f052021-38b3-4e3f-a69c-ae91a2b8265f',
+	'3c8e2b02-e8d7-439c-b661-cd3617c59e48',
+	'2025-05-12 13:12:09.047'
+);
