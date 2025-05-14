@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -15,7 +16,7 @@ public class CreateOrderInputDTO {
 
     private UUID userId;
 
-    private UUID dishId;
+    private List<UUID> dishIds;
 
     private UUID boardId;
 

@@ -26,17 +26,20 @@ public class CreateOrderUseCase {
     @Transactional
     public void execute(CreateOrderInputDTO input) {
         var user = userJpaRepository.findById(input.getUserId())
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+                .orElseThrow(() -> new RuntimeException("User Not Found"));
 
-        var dish = dishJpaRepository.findById(input.getDishId())
-                .orElseThrow(() -> new RuntimeException("Prato não encontrado"));
+        var dishes = dishJpaRepository.findAllById(input.getDishIds());
+
+        if (dishes.size() != input.getDishIds().size()) {
+            throw new RuntimeException("Some Dish Reported Was Not Found");
+        }
 
         var board = boardJpaRepository.findById(input.getBoardId())
-                .orElseThrow(() -> new RuntimeException("Mesa não encontrada"));
+                .orElseThrow(() -> new RuntimeException("Board Not Found"));
 
         var order = new Order();
         order.setUser(user);
-        order.setDish(dish);
+        order.setDishes(dishes);
         order.setBoard(board);
         order.setCreatedAt(LocalDateTime.now());
 

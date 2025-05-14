@@ -50,26 +50,39 @@ INSERT INTO orders (
 	id,
 	board_id,
 	user_id,
-	dish_id,
 	created_at
 ) VALUES
 (
 	'77db4449-fcfa-4e8f-964f-25e5a36dd538',
 	'b13cd9c5-767f-4466-8076-efa43fa97841',
 	'5f052021-38b3-4e3f-a69c-ae91a2b8265f',
-	'921edc35-d8fb-40e4-b07c-945153ef92d0',
 	'2025-05-12 09:03:03.880'
 ),
 (	'1d5166c7-4500-4137-89e5-94801c058fb4',
 	'b13cd9c5-767f-4466-8076-efa43fa97841',
 	'5f052021-38b3-4e3f-a69c-ae91a2b8265f',
-	'921edc35-d8fb-40e4-b07c-945153ef92d0',
 	'2025-05-12 09:17:34.847'
 ),
 (
 	'a52c80f2-a10b-4cf0-945c-e0ca960fd3af',
 	'f03efcaa-a8e4-40ef-9b76-e009d3130be7',
 	'5f052021-38b3-4e3f-a69c-ae91a2b8265f',
-	'3c8e2b02-e8d7-439c-b661-cd3617c59e48',
 	'2025-05-12 13:12:09.047'
 );
+
+
+INSERT INTO orders_dishes (order_id, dish_id) VALUES
+('77db4449-fcfa-4e8f-964f-25e5a36dd538', '921edc35-d8fb-40e4-b07c-945153ef92d0'),
+('77db4449-fcfa-4e8f-964f-25e5a36dd538', '33f09169-3000-4214-a9e2-f1d3c0b8bad4'),
+('77db4449-fcfa-4e8f-964f-25e5a36dd538', '3c8e2b02-e8d7-439c-b661-cd3617c59e48');
+
+
+INSERT INTO orders_dishes (order_id, dish_id) VALUES
+('1d5166c7-4500-4137-89e5-94801c058fb4', '921edc35-d8fb-40e4-b07c-945153ef92d0'),
+('1d5166c7-4500-4137-89e5-94801c058fb4', '33f09169-3000-4214-a9e2-f1d3c0b8bad4'),
+('1d5166c7-4500-4137-89e5-94801c058fb4', '3c8e2b02-e8d7-439c-b661-cd3617c59e48');
+
+INSERT INTO orders_dishes (order_id, dish_id) VALUES
+('a52c80f2-a10b-4cf0-945c-e0ca960fd3af', '921edc35-d8fb-40e4-b07c-945153ef92d0'),
+('a52c80f2-a10b-4cf0-945c-e0ca960fd3af', '33f09169-3000-4214-a9e2-f1d3c0b8bad4'),
+('a52c80f2-a10b-4cf0-945c-e0ca960fd3af', '3c8e2b02-e8d7-439c-b661-cd3617c59e48');

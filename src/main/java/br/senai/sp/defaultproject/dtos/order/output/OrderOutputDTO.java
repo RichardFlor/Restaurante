@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -16,6 +17,6 @@ public class OrderOutputDTO {
     private UUID id;
     private UserDetailedOutputDTO user;
     private BoardOutputDTO board;
-    private DishOutputDTO dish;
+    private List<DishOutputDTO> dishes;
 
 }
