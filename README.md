@@ -28,6 +28,7 @@ API desenvolvida durante estudos.
 
 - Clonar repositório git
 - Construir o projeto:
+- Executar o Script do banco para injetar os dados default, o script esta na pasta resources com o nome "Script DataBase".
 ```
 $ ./mvnw clean package
 ```
