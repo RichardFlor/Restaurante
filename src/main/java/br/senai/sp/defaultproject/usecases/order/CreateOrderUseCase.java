@@ -1,7 +1,12 @@
 package br.senai.sp.defaultproject.usecases.order;
 
 import br.senai.sp.defaultproject.dtos.order.input.CreateOrderInputDTO;
+import br.senai.sp.defaultproject.entities.Board;
 import br.senai.sp.defaultproject.entities.Order;
+import br.senai.sp.defaultproject.entities.User;
+import br.senai.sp.defaultproject.errors.ExceptionCode;
+import br.senai.sp.defaultproject.errors.exceptions.BusinessRuleException;
+import br.senai.sp.defaultproject.errors.exceptions.EntityNotFoundException;
 import br.senai.sp.defaultproject.repositories.board.BoardJpaRepository;
 import br.senai.sp.defaultproject.repositories.dish.DishJpaRepository;
 import br.senai.sp.defaultproject.repositories.order.OrderJpaRepository;
@@ -12,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.concurrent.ExecutionException;
 
 @RequiredArgsConstructor
 @Service
@@ -26,16 +32,16 @@ public class CreateOrderUseCase {
     @Transactional
     public void execute(CreateOrderInputDTO input) {
         var user = userJpaRepository.findById(input.getUserId())
-                .orElseThrow(() -> new RuntimeException("User Not Found"));
+                .orElseThrow(() -> new EntityNotFoundException(User.class));
 
         var dishes = dishJpaRepository.findAllById(input.getDishIds());
 
         if (dishes.size() != input.getDishIds().size()) {
-            throw new RuntimeException("Some Dish Reported Was Not Found");
+            throw new BusinessRuleException(ExceptionCode.SOME_DISH_REPORTED_WAS_NOT_FOUND);
         }
 
         var board = boardJpaRepository.findById(input.getBoardId())
-                .orElseThrow(() -> new RuntimeException("Board Not Found"));
+                .orElseThrow(() -> new EntityNotFoundException(Board.class));
 
         var order = new Order();
         order.setUser(user);
