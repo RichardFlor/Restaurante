@@ -1,7 +1,6 @@
 package br.senai.sp.defaultproject.usecases.board;
 
 import br.senai.sp.defaultproject.dtos.board.input.CreateBoardInputDTO;
-import br.senai.sp.defaultproject.dtos.user.input.CreateUserInputDTO;
 import br.senai.sp.defaultproject.mappers.board.BoardStructMapper;
 import br.senai.sp.defaultproject.repositories.board.BoardJpaRepository;
 import br.senai.sp.defaultproject.usecases.user.FindUserByIdUseCase;

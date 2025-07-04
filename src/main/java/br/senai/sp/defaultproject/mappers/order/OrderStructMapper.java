@@ -8,7 +8,6 @@ import br.senai.sp.defaultproject.mappers.dish.DishStructMapper;
 import br.senai.sp.defaultproject.mappers.user.UserStructMapper;
 import org.mapstruct.Mapper;
 
-
 import java.util.List;
 
 @Mapper(componentModel = "spring", uses = {
